@@ -256,7 +256,7 @@ class SecureTunnelClient {
   Uint8List _deriveSessionKey(Uint8List sharedSecret) {
     final pbkdf2 = PBKDF2KeyDerivator(HMac(SHA256Digest(), 64));
     pbkdf2.init(Pbkdf2Parameters(
-      utf8.encode('delovahome-session') as Uint8List,
+      utf8.encode('delovahome-session'),
       100000,
       32,
     ));
