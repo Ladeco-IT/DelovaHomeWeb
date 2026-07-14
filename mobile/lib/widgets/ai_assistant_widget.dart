@@ -119,8 +119,10 @@ class _AIAssistantWidgetState extends State<AIAssistantWidget> {
             _sendCommand();
           }
         },
-        localeId: _lang == 'en' ? 'en_US' : 'nl_NL',
-        listenOptions: stt.SpeechListenOptions(cancelOnError: true),
+        listenOptions: stt.SpeechListenOptions(
+          cancelOnError: true,
+          localeId: _lang == 'en' ? 'en_US' : 'nl_NL',
+        ),
       );
     }
   }

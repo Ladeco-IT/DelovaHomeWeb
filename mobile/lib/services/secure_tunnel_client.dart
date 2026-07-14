@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:pointycastle/export.dart';
-import 'package:crypto/crypto.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Secure Tunnel Client for DelovaHome
@@ -73,8 +72,8 @@ class SecureTunnelClient {
     ));
     
     final keyPair = keyGen.generateKeyPair();
-    final publicKey = keyPair.publicKey as ECPublicKey;
-    final privateKey = keyPair.privateKey as ECPrivateKey;
+    final publicKey = keyPair.publicKey;
+    final privateKey = keyPair.privateKey;
 
     // Encode public key
     final publicKeyBytes = _encodePublicKey(publicKey);

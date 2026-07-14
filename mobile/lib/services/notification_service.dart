@@ -51,7 +51,9 @@ class NotificationService {
         iOS: initializationSettingsDarwin,
       );
 
-      await _localNotifications.initialize(initializationSettings);
+      await _localNotifications.initialize(
+        settings: initializationSettings,
+      );
 
       // 4. Foreground Handler
       FirebaseMessaging.onMessage.listen((RemoteMessage message) {
@@ -97,10 +99,10 @@ class NotificationService {
 
     if (notification != null && android != null) {
       _localNotifications.show(
-        notification.hashCode,
-        notification.title,
-        notification.body,
-        const NotificationDetails(
+        id: notification.hashCode,
+        title: notification.title,
+        body: notification.body,
+        notificationDetails: const NotificationDetails(
           android: AndroidNotificationDetails(
             'high_importance_channel',
             'High Importance Notifications',

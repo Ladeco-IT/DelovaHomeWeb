@@ -416,8 +416,8 @@ class ApiService {
       final body = {
         'command': command,
         'value': value,
-        if (userId != null) 'userId': userId,
-        if (username != null) 'username': username,
+        'userId': ?userId,
+        'username': ?username,
       };
       await http.post(
         Uri.parse('$baseUrl/api/spotify/control'),
@@ -437,8 +437,8 @@ class ApiService {
       final username = prefs.getString('username');
       final body = {
         'deviceId': deviceId,
-        if (userId != null) 'userId': userId,
-        if (username != null) 'username': username,
+        'userId': ?userId,
+        'username': ?username,
       };
       final response = await http.post(
         Uri.parse('$baseUrl/api/spotify/transfer-or-sonos'),
@@ -502,7 +502,7 @@ class ApiService {
       final response = await http.post(
         Uri.parse('$baseUrl/api/sonos/$uuid/play-spotify'),
         headers: {'Content-Type': 'application/json'},
-        body: json.encode({'spotifyUri': spotifyUri, if (metadata != null) 'metadata': metadata}),
+        body: json.encode({'spotifyUri': spotifyUri, 'metadata': ?metadata}),
       );
       if (response.statusCode == 200) {
         final data = json.decode(response.body);

@@ -5,7 +5,7 @@ import 'secure_tunnel_client.dart';
 class ConnectionManager {
     static SecureTunnelClient? _tunnel;
     static String? _localUrl;
-    static bool _preferLocal = true;
+    static final bool _preferLocal = true;
 
     /// Initialize connection manager
     static Future<void> initialize() async {
@@ -22,6 +22,7 @@ class ConnectionManager {
         // Connect tunnel in background
         _tunnel!.connect().catchError((e) {
           print('[ConnectionManager] Tunnel connection failed: $e');
+          return false;
         });
       }
     }
