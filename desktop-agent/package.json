@@ -20,7 +20,7 @@
     "systeminformation": "^5.21.22"
   },
   "devDependencies": {
-    "electron": "^28.1.0",
+    "electron": "^41.10.6",
     "electron-builder": "^24.9.1"
   },
   "build": {
